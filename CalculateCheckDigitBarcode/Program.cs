@@ -30,7 +30,7 @@ namespace ConsoleApp1
 
             for (int i = 0; i < divideBarcode.Count; i++)
             {
-                if ((i % 2 == 0)
+                if (i % 2 == 0)
                     sumOfProduct += Convert.ToInt32(divideBarcode[i]) * 1;
                 else
                     sumOfProduct += Convert.ToInt32(divideBarcode[i]) * 3;

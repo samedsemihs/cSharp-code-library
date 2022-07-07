@@ -1,0 +1,19 @@
+private static string ConvertXmlToJson(string xml)
+        {
+            string json = string.Empty;
+
+            if (!string.IsNullOrEmpty(xml))
+            {
+                var doc = XElement.Parse(xml);
+                var node_cdata = doc.DescendantNodes().OfType<XCData>().ToList();
+                foreach (var node in node_cdata)
+                {
+                    node.Parent.Add(node.Value);
+                    node.Remove();
+                }
+
+                json = JsonConvert.SerializeXNode(doc, Newtonsoft.Json.Formatting.None, false);
+            }
+
+            return json;
+        }
